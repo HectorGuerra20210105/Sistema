@@ -1,0 +1,17 @@
+module Hz_27(entrada_reloj,y);
+input entrada_reloj;
+output reg y;
+reg [21:0]z=22'd0;
+parameter w=22'd3703703;
+
+always@(posedge entrada_reloj) // siempre que pase por un flanco positivo, Z va a sumar 1. El always se va a ejecutar, mientras que el este en un flanco de bajada no se va a ejecutar. 
+begin
+z<=z+22'd1;
+if(z>=(w-1))
+z<=22'd0;
+y<=(z<w/2)?1'b1:1'b0;
+end
+endmodule
+
+
+
